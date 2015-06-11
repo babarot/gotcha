@@ -4,9 +4,7 @@
 
 ## Description
 
-`goll` is simple `go get` tool. Therefore, 
-
-It doesn't have management function such as `bundle` because just install or update go packages. 
+`goll` is simple `go get` tool. Therefore, it doesn't have management function such as `bundle` because just install or update go packages. 
 
 ***DEMO:***
 
@@ -25,6 +23,7 @@ It doesn't have management function such as `bundle` because just install or upd
 		"github.com/b4b4r07/gch",
 		"github.com/b4b4r07/go-pipe",
 		"github.com/b4b4r07/gomi",
+		# ...,
 	]
 	```
 
@@ -40,9 +39,9 @@ It doesn't have management function such as `bundle` because just install or upd
 
 ## Usage
 
-	$ goll [ path/to/config.toml ]
+	$ goll [<path/to/config.toml>]
 
-Hereby, `repos` that are described in this by `config.toml` will be install or update.
+`repos` that are described in `config.toml` will be install or update.
 
 ## Installation
 

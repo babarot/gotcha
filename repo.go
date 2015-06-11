@@ -8,14 +8,6 @@ import (
 	"sync"
 )
 
-type Config struct {
-	Repos []string
-}
-
-const (
-	AssetIDNotFound int = 0
-)
-
 func Update(c Config) (<-chan bool, <-chan string, <-chan string) {
 	doneCh := make(chan bool)
 	outCh, errCh := make(chan string), make(chan string)
@@ -45,7 +37,7 @@ func Update(c Config) (<-chan bool, <-chan string, <-chan string) {
 
 func run(args ...string) error {
 	if len(args) == 0 {
-		return errors.New("")
+		return errors.New("too few arguments")
 	}
 	cmd := exec.Command(args[0], args[1:]...)
 	return cmd.Run()
