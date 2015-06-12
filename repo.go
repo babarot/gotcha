@@ -6,6 +6,8 @@ import (
 	"os/exec"
 	"runtime"
 	"sync"
+
+	"github.com/kyokomi/emoji"
 )
 
 func Update(c Config) (<-chan bool, <-chan string, <-chan string) {
@@ -21,9 +23,9 @@ func Update(c Config) (<-chan bool, <-chan string, <-chan string) {
 			go func(url string) {
 				defer wg.Done()
 				semaphore <- 1
-				outCh <- fmt.Sprintf("--> Updating: %s\n", url)
+				outCh <- fmt.Sprintf("%s %s\n", emoji.Sprint(":arrow_right:"), url)
 				if err := run("go", "get", "-u", url); err != nil {
-					errCh <- fmt.Sprintf("    error `%s': %s\n", url, err)
+					errCh <- fmt.Sprintf("%s `%s': %s\n", emoji.Sprint(":x:"), url, err)
 				}
 				<-semaphore
 			}(repo)
