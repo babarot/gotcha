@@ -1,6 +1,12 @@
 # goal
 
-[![Build Status](https://travis-ci.org/b4b4r07/goal.svg?branch=master)](https://travis-ci.org/b4b4r07/goal)
+[![Build Status](https://travis-ci.org/b4b4r07/goal.svg?)][travis]
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)][license]
+[![GitHub release](http://img.shields.io/github/release/b4b4r07/goal.svg)][release]
+
+[travis]: https://travis-ci.org/b4b4r07/goal
+[license]: https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt
+[release]: https://github.com/b4b4r07/goal/releases
 
 `goal` is a simple `go get` tool which pull all Go packages described in config.toml.
 
