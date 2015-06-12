@@ -1,5 +1,7 @@
 # goal
 
+[![Build Status](https://travis-ci.org/b4b4r07/goal.svg?branch=master)](https://travis-ci.org/b4b4r07/goal)
+
 `goal` is a simple `go get` tool which pull all Go packages described in config.toml.
 
 ## Description
