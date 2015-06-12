@@ -1,14 +1,14 @@
-# goll
+# goal
 
-`goll` pulls go packages.
+`goal` pulls go packages.
 
 ## Description
 
-`goll` is simple `go get` tool. Therefore, it doesn't have management function such as `bundle` because just install or update go packages. 
+`goal` is simple `go get` tool. Therefore, it doesn't have management function such as `bundle` because just install or update go packages. 
 
 ***DEMO:***
 
-![demo](goll.gif)
+![demo](goal.gif)
 
 ## Features
 
@@ -39,9 +39,9 @@
 
 ## Usage
 
-	$ goll [<path/to/config.toml>]
+	$ goal [<path/to/config.toml>]
 
-[`repos`](https://github.com/b4b4r07/goll/blob/master/example/config.toml#L1) that are described in `config.toml` will be install or update.
+[`repos`](https://github.com/b4b4r07/goal/blob/master/example/config.toml#L1) that are described in `config.toml` will be install or update.
 
 ## Installation
 
@@ -49,14 +49,14 @@
 
 If you want to go the Go way (install in GOPATH/bin) and just want the command:
 
-	$ go get github.com/b4b4r07/goll
+	$ go get github.com/b4b4r07/goal
 
 ### Otherwise
 
 If you're on OS X and want to use [Homebrew](https://brew.sh):
 
-	$ brew tap b4b4r07/goll
-	$ brew install goll
+	$ brew tap b4b4r07/goal
+	$ brew install goal
 
 ## License
 
