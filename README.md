@@ -41,7 +41,7 @@
 
 	$ goll [<path/to/config.toml>]
 
-`repos` that are described in `config.toml` will be install or update.
+[`repos`](https://github.com/b4b4r07/goll/blob/master/example/config.toml#L1) that are described in `config.toml` will be install or update.
 
 ## Installation
 
