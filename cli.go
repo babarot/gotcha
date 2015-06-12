@@ -12,8 +12,8 @@ import (
 const (
 	ExitCodeOK    int = 0
 	ExitCodeError int = 1 + iota
-	ExitCodeTomlParseError
 	ExitCodeTomlNotFound
+	ExitCodeTomlParseError
 )
 
 type CLI struct {
