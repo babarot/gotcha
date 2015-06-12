@@ -1,6 +1,6 @@
 # goal
 
-`goal` pulls go packages.
+`goal` is simple `go get` tool, which pull all go packages in config.toml
 
 ## Description
 
