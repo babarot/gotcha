@@ -1,8 +1,8 @@
 # goal
 
-[![Build Status](https://travis-ci.org/b4b4r07/goal.svg?)][travis]
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg)][license]
-[![GitHub release](http://img.shields.io/github/release/b4b4r07/goal.svg)][release]
+[![Build Status](https://img.shields.io/b4b4r07/goal.svg?style=flat-square)][travis]
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
+[![GitHub release](http://img.shields.io/github/release/b4b4r07/goal.svg?style=flat-square)][release]
 
 [travis]: https://travis-ci.org/b4b4r07/goal
 [license]: https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt
