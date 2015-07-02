@@ -14,6 +14,7 @@ const (
 	ExitCodeError int = 1 + iota
 	ExitCodeTomlNotFound
 	ExitCodeTomlParseError
+	ExitCodeGopathNotSet
 )
 
 type CLI struct {
@@ -25,6 +26,11 @@ type Config struct {
 }
 
 func (cli *CLI) Run(args []string) int {
+	if os.Getenv("GOPATH") == "" {
+		fmt.Fprintln(cli.errStream, ColoredError("cannot download, $GOPATH not set"))
+		return ExitCodeGopathNotSet
+	}
+
 	var tomlFile = "config.toml"
 	if len(args) > 0 {
 		tomlFile = args[0]
