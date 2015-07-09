@@ -1,6 +1,6 @@
 # goal
 
-[![Build Status](https://img.shields.io/b4b4r07/goal.svg?style=flat-square)][travis]
+[![Build Status](https://img.shields.io/travis/b4b4r07/goal.svg?style=flat-square)][travis]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 [![GitHub release](http://img.shields.io/github/release/b4b4r07/goal.svg?style=flat-square)][release]
 
