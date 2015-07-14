@@ -8,6 +8,7 @@ import (
 	"runtime"
 
 	"github.com/BurntSushi/toml"
+	"github.com/kyokomi/emoji"
 )
 
 const (
@@ -104,19 +105,21 @@ func (cli *CLI) Run(args []string) int {
 		all := len(conf.Repos)
 		successed := all - failed
 		percent := float64(successed) / float64(all) * 100
+		sign := emoji.Sprint(":no_good:")
+		if int(percent) > 80 {
+			sign = emoji.Sprint(":ok_woman:")
+		}
 		fmt.Printf(
-			"repos: %d\nsuccessed: %d, failed: %d, ok: %.1f%%\n",
+			"repos: %d\nsuccessed: %d, failed: %d, ok: %.1f%% [%s]\n",
 			all,
 			successed,
 			failed,
 			percent,
+			sign,
 		)
-		if int(percent) > 60 {
-			return ExitCodeOK
-		}
 	}
 
-	if errOccurred {
+	if !verbose && errOccurred {
 		return ExitCodeError
 	}
 
