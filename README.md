@@ -1,4 +1,4 @@
-# goal
+![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/goal/logo.png)
 
 [![Build Status](https://img.shields.io/travis/b4b4r07/goal.svg?style=flat-square)][travis]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
@@ -16,7 +16,7 @@
 
 ***DEMO:***
 
-![demo](goal.gif)
+![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/goal/demo.gif)
 
 ## Features
 
@@ -53,18 +53,18 @@
 
 ## Installation
 
-### Developer
+- Developer
 
-If you want to go the Go way (install in GOPATH/bin) and just want the command:
+	If you want to go the Go way (install in GOPATH/bin) and just want the command:
 
-	$ go get github.com/b4b4r07/goal
+		$ go get github.com/b4b4r07/goal
 
-### Otherwise
+- Otherwise
 
-If you're on OS X and want to use [Homebrew](https://brew.sh):
+	If you're on OS X and want to use [Homebrew](https://brew.sh):
 
-	$ brew tap b4b4r07/goal
-	$ brew install goal
+		$ brew tap b4b4r07/goal
+		$ brew install goal
 
 ## License
 
