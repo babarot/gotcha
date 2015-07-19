@@ -1,26 +1,27 @@
-![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/goal/logo.png)
+![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/gotcha/logo.png)
 
-[![Build Status](https://img.shields.io/travis/b4b4r07/goal.svg?style=flat-square)][travis]
+[![Build Status](https://img.shields.io/travis/b4b4r07/gotcha.svg?style=flat-square)][travis]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
-[![GitHub release](http://img.shields.io/github/release/b4b4r07/goal.svg?style=flat-square)][release]
+[![GitHub release](http://img.shields.io/github/release/b4b4r07/gotcha.svg?style=flat-square)][release]
 
-[travis]: https://travis-ci.org/b4b4r07/goal
+[travis]: https://travis-ci.org/b4b4r07/gotcha
 [license]: https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt
-[release]: https://github.com/b4b4r07/goal/releases
+[release]: https://github.com/b4b4r07/gotcha/releases
 
-`goal` is a simple `go get` tool which pull all Go packages described in config.toml.
+`gotcha` is a simple tool that grabs Go packages
 
 ## Description
 
-`goal` is simple `go get` tool. Therefore, it doesn't have management function such as `bundle` because just install or update go packages. 
+Once you've found a Go software title to your liking, you can easily install it with `gotcha`: just add the package name.
+
 
 ***DEMO:***
 
-![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/goal/demo.gif)
+![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/gotcha/demo.gif)
 
 ## Features
 
-- **A TOML file**
+- **config.toml**
 
 	It is possible to manage the go package list that you want to install by writing a TOML file such as the following:
 
@@ -37,39 +38,38 @@
 
 	[TOML](https://github.com/toml-lang/toml) is easier to read and easier to write than [JSON](https://json.org).
 
-- **Faster**
+- **Install in parallel**
 
-	Fast installation thanks to the parallel processing by goroutine
-
-## Requirements
-
-- go
+	Fast installation thanks to the parallel processing by goroutine.
 
 ## Usage
 
-	$ goal [<path/to/config.toml>]
+[`repos`](https://github.com/b4b4r07/gotcha/blob/master/example/config.toml#L1) that are described in `config.toml` will be install or update.
 
-[`repos`](https://github.com/b4b4r07/goal/blob/master/example/config.toml#L1) that are described in `config.toml` will be install or update.
+```console
+$ gotcha --help
+Usage: gotcha [options] [path]
+gotcha is a simple tool that grabs Go packages
+
+Options:
+--verbose, -v     View only directory path in $GOPATHs
+                  without running git status.
+--version         Print the version of this application
+
+```
 
 ## Installation
 
-- Developer
+```console
+$ curl -L git.io/gotcha | sh
+```
 
-	If you want to go the Go way (install in GOPATH/bin) and just want the command:
+If you want to go the Go way (install in GOPATH/bin) and just want the command:
 
-		$ go get github.com/b4b4r07/goal
-
-- Otherwise
-
-	If you're on OS X and want to use [Homebrew](https://brew.sh):
-
-		$ brew tap b4b4r07/goal
-		$ brew install goal
+```console
+$ go get github.com/b4b4r07/gotcha
+```
 
 ## License
 
-[MIT](https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt)
-
-## Author
-
-[BABAROT](http://tellme.tokyo) a.k.a. b4b4r07
+[MIT](https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt) © BABAROT (a.k.a. b4b4r07)
