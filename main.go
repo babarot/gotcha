@@ -3,7 +3,7 @@ package main
 import "os"
 
 const (
-	Name    = "goal"
+	Name    = "gotcha"
 	Version = "0.1.1"
 )
 

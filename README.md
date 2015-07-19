@@ -58,6 +58,8 @@ Options:
 
 ## Installation
 
+![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/gotcha/installation.png)
+
 ```console
 $ curl -L git.io/gotcha | sh
 ```

@@ -31,7 +31,7 @@ type Config struct {
 func (cli *CLI) Run(args []string) int {
 	var version, verbose bool
 
-	flags := flag.NewFlagSet("goal", flag.ContinueOnError)
+	flags := flag.NewFlagSet("gotcha", flag.ContinueOnError)
 	flags.SetOutput(cli.errStream)
 	flags.Usage = func() {
 		fmt.Fprintf(cli.errStream, "Thanks for using %s %s\n%s", Name, emoji.Sprint(":blush:"), helpText)
