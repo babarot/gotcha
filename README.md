@@ -52,10 +52,8 @@ Usage: gotcha [options] [path]
 gotcha is a simple tool that grabs Go packages
 
 Options:
---verbose, -v     View only directory path in $GOPATHs
-                  without running git status.
+--verbose, -v     Cause gotcha to be verbose, showing items as they are installed.
 --version         Print the version of this application
-
 ```
 
 ## Installation

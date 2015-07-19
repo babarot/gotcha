@@ -34,7 +34,7 @@ func (cli *CLI) Run(args []string) int {
 	flags := flag.NewFlagSet("goal", flag.ContinueOnError)
 	flags.SetOutput(cli.errStream)
 	flags.Usage = func() {
-		fmt.Fprint(cli.errStream, helpText)
+		fmt.Fprintf(cli.errStream, "Thanks for using %s %s\n%s", Name, emoji.Sprint(":blush:"), helpText)
 	}
 
 	flags.BoolVar(&version, "version", false, "")
@@ -126,11 +126,10 @@ func (cli *CLI) Run(args []string) int {
 	return ExitCodeOK
 }
 
-var helpText = `Usage: goal [options] [path]
-gch is a tool to run "git status" in every $GOPATHs recursively.
+var helpText = `Usage: gotcha [options] [path]
+gotcha is a simple tool that grabs Go packages
 
 Options:
---verbose, -v     View only directory path in $GOPATHs
-                  without running git status.
+--verbose, -v     Cause gotcha to be verbose, showing items as they are installed.
 --version         Print the version of this application
 `
