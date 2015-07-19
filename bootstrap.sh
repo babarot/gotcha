@@ -83,7 +83,6 @@ ok() {
 
 die() {
     logging ERROR "$1" 1>&2
-    exit 1
 }
 
 lower() {
@@ -133,6 +132,7 @@ main() {
     # github releases not available
     if [ -z "$releases" ]; then
         die "URL that can be used as Github releases was not found"
+        exit 1
     fi
 
     # download github releases for user's platform
@@ -144,19 +144,29 @@ main() {
     do
         bin="$(basename "$i" | grep "$re")"
         if [ -f "$bin" ]; then
-            mv "$bin" "$repo"
+            cp "$bin" "$repo"
             chmod 755 "$repo"
-            sudo install -m 0755 "$repo" "${PATH%%:*}"
             logging INFO "installing to ${PATH%%:*}..."
+            sudo install -m 0755 "$repo" "${PATH%%:*}"
             break
         fi
+    done
+
+    # remove the intermediate files
+    for i in $releases
+    do
+        rm -f "$i"
     done
 
     # log
     if [ -x "${PATH%%:*}"/"$repo" ]; then
         ok "$repo: sucessfully installed"
+        rm -f "$repo"
     else
         die "$repo: incomplete or unsuccessful installations"
+        echo "please put the binary to somewhere you want"
+        echo "(on UNIX-ly systems, /usr/local/bin or the like)"
+        exit 1
     fi
 }
 
