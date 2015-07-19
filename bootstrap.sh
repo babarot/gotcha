@@ -155,7 +155,7 @@ main() {
     # remove the intermediate files
     for i in $releases
     do
-        rm -f "$i"
+        rm -f $(basename "$i")
     done
 
     # log
