@@ -125,6 +125,9 @@ main() {
     # equals to
     # but this one liner needs jq
     # curl --fail -X GET https://api.github.com/repos/b4b4r07/gomi/releases/latest | jq '.assets[0].browser_download_url' | xargs curl -L -O
+    # http://stackoverflow.com/questions/24987542/is-there-a-link-to-github-for-downloading-a-file-in-the-latest-release-of-a-repo
+    # http://stackoverflow.com/questions/18384873/how-to-list-the-releases-of-a-repository
+    # http://stackoverflow.com/questions/5207269/releasing-a-build-artifact-on-github
     releases="$( curl -s -L https://github.com/"${user}"/"${repo}"/releases/latest |
     egrep -o '/'"${user}"'/'"${repo}"'/releases/download/[^"]*' |
     grep $PLATFORM )"
