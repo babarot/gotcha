@@ -5,6 +5,11 @@ export PLATFORM
 user=b4b4r07
 repo=gotcha
 
+has() {
+    which "$1" >/dev/null 2>&1
+    return $?
+}
+
 ink() {
     if [ "$#" -eq 0 -o "$#" -gt 2 ]; then
         echo "Usage: ink <color> <text>"
@@ -37,7 +42,8 @@ ink() {
         esac
     fi
 
-    printf "${open}${color}${text}${close}"
+    #printf "${open}${color}${text}${close}"
+    printf "%s%s%s%s" "${open}" "${color}" "${text}" "${close}"
 }
 
 logging() {
@@ -122,8 +128,9 @@ main() {
 
     os_detect
 
-    # equals to
-    # but this one liner needs jq
+    local releases i path bin re
+
+    # Same as
     # curl --fail -X GET https://api.github.com/repos/b4b4r07/gomi/releases/latest | jq '.assets[0].browser_download_url' | xargs curl -L -O
     # http://stackoverflow.com/questions/24987542/is-there-a-link-to-github-for-downloading-a-file-in-the-latest-release-of-a-repo
     # http://stackoverflow.com/questions/18384873/how-to-list-the-releases-of-a-repository
@@ -141,34 +148,58 @@ main() {
     # download github releases for user's platform
     echo "$releases" | wget --base=http://github.com/ -i -
 
-    # install repo
+    # Main processing
+    #
+    # check machine architecture
     re=$(uname -m | grep -o "..$")
     for i in $releases
     do
         bin="$(basename "$i" | grep "$re")"
-        if [ -f "$bin" ]; then
+        if [ -n "$bin" -a -f "$bin" ]; then
+            # Make a copy of repo and rename to repo
             cp "$bin" "$repo"
             chmod 755 "$repo"
+
             logging INFO "installing to ${PATH%%:*}..."
-            sudo install -m 0755 "$repo" "${PATH%%:*}"
+
+            # Find the directory that you can install from $PATH
+            for path in ${PATH//:/ }
+            do
+                sudo install -m 0755 "$repo" "$path"
+                if [ $? -eq ]; then
+                    ok "installed $repo to $path"
+                    break
+                fi
+            done
+
+            # One binary is enough to complete this installation
             break
+        else
+            # no binary can execute
+            die "$releases: there is no binary that can execute on this platform"
+            echo "go to https://github.com/$user/$repo and check how to install" 1>&2
+            exit 1
         fi
     done
 
+    # Cleanup!
     # remove the intermediate files
+    # thus complete the installation
     for i in $releases
     do
-        rm -f $(basename "$i")
+        rm -f "$(basename "$i")"
     done
 
-    # log
-    if [ -x "${PATH%%:*}"/"$repo" ]; then
+    # Notification log
+    if has "$repo"; then
         ok "$repo: sucessfully installed"
+        # cleanup
         rm -f "$repo"
     else
         die "$repo: incomplete or unsuccessful installations"
-        echo "please put the binary to somewhere you want"
-        echo "(on UNIX-ly systems, /usr/local/bin or the like)"
+        echo "please put ./$repo to somewhere you want" 1>&2
+        echo "(on UNIX-ly systems, /usr/local/bin or the like)" 1>&2
+        echo "you should run 'mv ./$repo /usr/local/bin' now" 1>&2
         exit 1
     fi
 }
@@ -182,6 +213,11 @@ else
     # -> cat a.sh | bash
     # -> bash -c "$(cat a.sh)"
     # -> bash a.sh
+    if [ -z "$BASH_VERSION" ]; then
+        die "This installation requires bash"
+        exit 1
+    fi
+
     if [ "$0" = "${BASH_SOURCE:-}" ]; then
         # -> bash a.sh
         exit
