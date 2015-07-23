@@ -70,6 +70,29 @@ If you want to go the Go way (install in GOPATH/bin) and just want the command:
 $ go get github.com/b4b4r07/gotcha
 ```
 
+## Configuration
+
+To customize gotcha settings:
+
+```toml:
+repos = [
+	# Adding the repository to repos
+    "github.com/BurntSushi/toml",
+    "github.com/BurntSushi/toml/cmd/tomlv",
+]
+
+[emoji]
+
+[emoji.verbose]
+pass = ":ok_woman:"
+fail = ":no_good:"
+
+[emoji.download]
+pass = ":arrow_right:"
+fail = ":x:"
+
+```
+
 ## License
 
 [MIT](https://raw.githubusercontent.com/b4b4r07/dotfiles/master/doc/LICENSE-MIT.txt) © BABAROT (a.k.a. b4b4r07)

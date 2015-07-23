@@ -26,6 +26,12 @@ type CLI struct {
 
 type Config struct {
 	Repos []string
+	Emoji map[string]Emoji
+}
+
+type Emoji struct {
+	Pass string
+	Fail string
 }
 
 func (cli *CLI) Run(args []string) int {
@@ -79,6 +85,10 @@ func (cli *CLI) Run(args []string) int {
 	cpu := runtime.NumCPU()
 	runtime.GOMAXPROCS(cpu)
 
+	//fmt.Printf("%#v\n", conf.Emoji)
+	//fmt.Printf("%#v\n", conf.Emoji["verbose"].Pass)
+	//os.Exit(0)
+
 	failed := 0
 	doneCh, outCh, errCh := Update(conf)
 	statusCh := make(chan bool)
@@ -105,9 +115,9 @@ func (cli *CLI) Run(args []string) int {
 		all := len(conf.Repos)
 		successed := all - failed
 		percent := float64(successed) / float64(all) * 100
-		sign := emoji.Sprint(":no_good:")
+		sign := emoji.Sprint(conf.Emoji["verbose"].Fail)
 		if int(percent) > 80 {
-			sign = emoji.Sprint(":ok_woman:")
+			sign = emoji.Sprint(conf.Emoji["verbose"].Pass)
 		}
 		fmt.Printf(
 			"repos: %d\nsuccessed: %d, failed: %d, ok: %.1f%% [%s]\n",
