@@ -42,8 +42,7 @@ ink() {
         esac
     fi
 
-    #printf "${open}${color}${text}${close}"
-    printf "%s%s%s%s" "${open}" "${color}" "${text}" "${close}"
+    printf "${open}${color}${text}${close}"
 }
 
 logging() {
@@ -166,21 +165,24 @@ main() {
             for path in ${PATH//:/ }
             do
                 sudo install -m 0755 "$repo" "$path"
-                if [ $? -eq ]; then
-                    ok "installed $repo to $path"
+                if [ $? -eq 0 ]; then
+                    ok "installed $repo to $path sucessfully "
                     break
                 fi
             done
 
             # One binary is enough to complete this installation
             break
-        else
-            # no binary can execute
-            die "$releases: there is no binary that can execute on this platform"
-            echo "go to https://github.com/$user/$repo and check how to install" 1>&2
-            exit 1
         fi
     done
+
+    # no binary can execute
+    if [ $ok -eq 0 ]; then
+        die "there is no binary that can execute on this platform"
+        echo "$releases"
+        echo "go to https://github.com/$user/$repo and check how to install" 1>&2
+        exit 1
+    fi
 
     # Cleanup!
     # remove the intermediate files
@@ -192,7 +194,8 @@ main() {
 
     # Notification log
     if has "$repo"; then
-        ok "$repo: sucessfully installed"
+        ok "Now finished!"
+
         # cleanup
         rm -f "$repo"
     else
