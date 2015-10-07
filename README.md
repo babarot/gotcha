@@ -74,23 +74,20 @@ $ go get github.com/b4b4r07/gotcha
 
 To customize gotcha settings:
 
-```toml:
+```toml
 repos = [
-	# Adding the repository to repos
+    # Adding the repository to repos
     "github.com/BurntSushi/toml",
     "github.com/BurntSushi/toml/cmd/tomlv",
 ]
 
 [emoji]
-
-[emoji.verbose]
-pass = ":ok_woman:"
-fail = ":no_good:"
-
-[emoji.download]
-pass = ":arrow_right:"
-fail = ":x:"
-
+  [emoji.verbose]
+    pass = ":ok_woman:"
+    fail = ":no_good:"
+  [emoji.download]
+    pass = ":arrow_right:"
+    fail = ":x:"
 ```
 
 ## License
