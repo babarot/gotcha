@@ -58,10 +58,12 @@ Options:
 
 ## Installation
 
-![](https://raw.githubusercontent.com/b4b4r07/screenshots/master/gotcha/installation.png)
+For zsh user, you can easily install gotcha by using [zplug](https://github.com/b4b4r07/zplug):
 
-```console
-$ curl -L git.io/gotcha | sh
+```zsh
+zplug "b4b4r07/gotcha", \
+    from:gh-r, \
+    as:command
 ```
 
 If you want to go the Go way (install in GOPATH/bin) and just want the command:
